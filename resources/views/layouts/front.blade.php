@@ -10,12 +10,13 @@
         <meta name="author" content="" />
         <title>ArtCom</title>
         <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
-        <link href="css/vendor/bootstrap.min.css" rel="stylesheet" />
-        <link href="css/vendor/vendor.min.css" rel="stylesheet" />
-        <link href="css/style.css" rel="stylesheet" />
-        <link href="fonts/icomoon/icons.css" rel="stylesheet" />
+        <link href="{{ asset('css/vendor/bootstrap.min.css')}}" rel="stylesheet" />
+        <link href="{{ asset('css/vendor/vendor.min.css')}}" rel="stylesheet" />
+        <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
+        <link href="{{ asset('fonts/icomoon/icons.css')}}" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Open%20Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet" />
+        @livewireStyles
     </head>
     <body class="has-smround-btns has-loader-bg equal-height">
         <header class="hdr-wrap">
@@ -902,7 +903,7 @@
         </div>
         
 
-        @yield("content")
+        {{$slot}}
         
         <footer class="page-footer footer-style-6">
             <div class="holder">
@@ -1223,12 +1224,13 @@
             </div>
             <div data-fancybox-close class="fancybox-close-small modal-close"><i class="icon-close"></i></div>
         </div>
-        <script src="js/vendor-special/lazysizes.min.js"></script>
-        <script src="js/vendor-special/ls.bgset.min.js"></script>
-        <script src="js/vendor-special/ls.aspectratio.min.js"></script>
-        <script src="js/vendor-special/jquery.min.js"></script>
-        <script src="js/vendor-special/jquery.ez-plus.js"></script>
-        <script src="js/vendor/vendor.min.js"></script>
-        <script src="js/app-html.js"></script>
+        <script src="{{ asset('js/vendor-special/lazysizes.min.js')}}"></script>
+        <script src="{{ asset('js/vendor-special/ls.bgset.min.js')}}"></script>
+        <script src="{{ asset('js/vendor-special/ls.aspectratio.min.js')}}"></script>
+        <script src="{{ asset('js/vendor-special/jquery.min.js')}}"></script>
+        <script src="{{ asset('js/vendor-special/jquery.ez-plus.js')}}"></script>
+        <script src="{{ asset('js/vendor/vendor.min.js')}}"></script>
+        <script src="{{ asset('js/app-html.js')}}"></script>
+        @livewireScripts
     </body>
 </html>
