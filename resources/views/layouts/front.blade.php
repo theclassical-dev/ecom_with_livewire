@@ -166,7 +166,13 @@
                             <div class="hdr-nav hide-mobile nav-holder justify-content-center px-4">
                                 <ul class="mmenu mmenu-js">
                                     <li class="mmenu-item--simple">
-                                        <a href="#" class="active">Home</a>
+                                        <a href="/" class="active">Home</a>
+                                    </li>
+                                    <li class="mmenu-item--mega">
+                                        <a href="/cart">Cart</a>
+                                    </li>
+                                    <li class="mmenu-item--mega">
+                                        <a href="/checkout">Checkout</a>
                                     </li>
                                     <li class="mmenu-item--simple">
                                         <a href="#">Pages</a>
