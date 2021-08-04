@@ -1,48 +1,60 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+    <div class="page-content">
+        <div class="holder breadcrumbs-wrap mt-0">
+            <div class="container">
+                <ul class="breadcrumbs">
+                    <li><a href="/">Home</a></li>
+                    <li><span>Sign In</span></li>
+                </ul>
             </div>
-        @endif
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+        </div>
+        <div class="holder">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-18 col-lg-12">
+                        <h2 class="text-center">Sign In</h2>
+                        <div class="form-wrapper">
+                            <p>To access your whishlist, address book and contact preferences and to take advantage of our speedy checkout, create an account with us now.</p>
+                            <x-jet-validation-errors class="md-4" />
+                            <form method="POST" action="{{ route('login')}}">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" name="email" class="form-control" placeholder="E-mail" :value="old('email')" autofocus required/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control" placeholder="Password" required autocomplete="current-password" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="clearfix">
+                                            <input id="checkbox1" name="remember" type="checkbox" checked="checked" />
+                                            <label for="checkbox1">
+                                                <span> Remember Me</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="clearfix">
+                                            <label> <a href="{{ route('password.request')}}"> Forgotten Password ?</a></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="clearfix">
+                                    <input id="checkbox1" name="checkbox1" type="checkbox" checked="checked" />
+                                    <label for="checkbox1">
+                                        By registering your details you agree to our <a href="#" class="custom-color" data-fancybox data-src="#modalTerms">Terms and Conditions</a> and
+                                        <a href="#" class="custom-color" data-fancybox data-src="#modalCookies">Cookie Policy</a>
+                                    </label>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" name="submit" class="btn">create an account</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
+        </div>
+    </div>
 </x-guest-layout>

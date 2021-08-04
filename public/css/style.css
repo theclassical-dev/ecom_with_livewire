@@ -42994,3 +42994,7 @@ body
     animation-name: driveInLeft;
     animation-duration: 2s;
 }
+
+.text-red-600{
+    color:red;
+}
