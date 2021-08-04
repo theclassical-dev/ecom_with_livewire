@@ -801,8 +801,14 @@
                                     <a href="#"><span>My Account ({{ Auth::user()->name}})</span><i class="icon-login"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><span>Dashboard</span><i class="icon-user2"></i></a>
+                                    <a href="{{route('admin.dashboard')}}"><span>Dashboard</span><i class="icon-user2"></i></a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Lougout</a>
+                                </li>
+                                <form id="logout-form" method="POST" action="{{ route('logout')}}">
+                                    @csrf
+                                </form>
                             </ul>
                         @else
                             <ul>
@@ -810,8 +816,15 @@
                                     <a href="#"><span>My Account ({{ Auth::user()->name}})</span><i class="icon-login"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><span>Dashboard</span><i class="icon-user2"></i></a>
+                                    <a href="{{route('user.dashboard')}}"><span>Dashboard</span><i class="icon-user2"></i></a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Lougout</a>
+                                </li>
+                                <form id="logout-form" method="POST" action="{{ route('logout')}}">
+                                    @csrf
+                                </form>
+                                
                             </ul>
                         @endif        
 

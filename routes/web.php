@@ -1,9 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+// namespace Laravel\Fortify\Actions;
+// use Illuminate\Support\Facades\Route;
+use App\Providers\RouteServiceProvider;
+
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CheckoutComponent;
+use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\Admin\AdminDashboardComponent;
+
+
 
 
 
@@ -31,7 +38,13 @@ Route::get('/checkout', CheckoutComponent::class);
 //     return view('dashboard');
 // })->name('dashboard');
 
-//user route
-Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    
+//Admin route
+Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
+    Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
 });
+
+// USer route
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/user/dashboard',UserDashboardComponent::class)->name('user.dashboard');
+});
+
