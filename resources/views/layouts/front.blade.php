@@ -9,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>ArtCom</title>
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico')}}" />
         <link href="{{ asset('css/vendor/bootstrap.min.css')}}" rel="stylesheet" />
         <link href="{{ asset('css/vendor/vendor.min.css')}}" rel="stylesheet" />
         <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
