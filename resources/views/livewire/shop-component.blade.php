@@ -10,7 +10,7 @@
                     <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
                         <div class="prd-inside">
                             <div class="prd-img-area">
-                                <a href="product.html" class="prd-img image-hover-scale image-container">
+                                <a href="{{route('product.details',['slug'=>$product->slug])}}" class="prd-img image-hover-scale image-container">
                                     <img
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         data-src="{{ asset('images/products')}}/{{$product->image}}"
@@ -61,8 +61,8 @@
                                     <div class="prd-rating justify-content-center">
                                         <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
                                     </div>
-                                    <div class="prd-tag"><a href="#">{{ $product->name}}</a></div>
-                                    <h2 class="prd-title"><a href="#">Oversized Cotton Blouse</a></h2>
+                                    <div class="prd-tag"><a href="{{route('product.details',['slug'=>$product->slug])}}">{{ $product->name}}</a></div>
+                                    <h2 class="prd-title"><a href="{{route('product.details',['slug'=>$product->slug])}}">Oversized Cotton Blouse</a></h2>
                                     <div class="prd-description">
                                         Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
                                     </div>
