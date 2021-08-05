@@ -18,7 +18,7 @@
                                         <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star"></i>
                                         <span class="reviews-link"><a href="#" class="js-reviews-link"> (17 reviews)</a></span>
                                     </div>
-                                    <h1 class="prd-block_title">Leather Pegged Pants</h1>
+                                    <h1 class="prd-block_title">{{$product->name}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -34,14 +34,14 @@
                                                 <span class="prd-img">
                                                     <img
                                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                        data-src="images/skins/fashion/product-page/product-01.webp"
+                                                        data-src="{{ asset('images/products')}}/{{$product->image}}"
                                                         class="lazyload fade-up elzoom"
-                                                        alt=""
-                                                        data-zoom-image="images/skins/fashion/product-page/product-01.webp"
+                                                        alt="{{$product->name}}"
+                                                        data-zoom-image="{{ asset('images/products')}}/{{$product->image}}"
                                                     />
                                                 </span>
                                             </div>
-                                            <div data-value="Beige">
+                                            {{-- <div data-value="Beige">
                                                 <span class="prd-img">
                                                     <img
                                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -128,7 +128,7 @@
                                                         data-zoom-image="images/skins/fashion/product-page/product-09.webp"
                                                     />
                                                 </span>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="prd-block_label-sale-squared justify-content-center align-items-center"><span>Sale</span></div>
                                     </div>
@@ -192,7 +192,7 @@
                             <div class="prd-block_info prd-block_info--style1" data-prd-handle="/products/copy-of-suede-leather-mini-skirt">
                                 <div class="prd-block_info-top prd-block_info_item order-0 order-md-2">
                                     <div class="prd-block_price prd-block_price--style2">
-                                        <div class="prd-block_price--actual">$180.00</div>
+                                        <div class="prd-block_price--actual">${{ $product->regular_price}}</div>
                                         <div class="prd-block_price-old-wrap">
                                             <span class="prd-block_price--old">$210.00</span>
                                             <span class="prd-block_price--text">You Save: $131.99 (28%)</span>
@@ -208,8 +208,7 @@
                                 <div class="prd-block_description prd-block_info_item">
                                     <h3>Short description</h3>
                                     <p>
-                                        Model is 5'9" wearing Size XS TallAnd without further ado, we give you our finest Shopify Theme FOXic! It is a subtle, complex and yet an extremely easy to use template for anyone, who wants to create
-                                        own website in ANY area of expertise.
+                                        {{ $product->short_description}}
                                     </p>
                                     <div class="mt-1"></div>
                                     <div class="row vert-margin-less">
@@ -228,7 +227,7 @@
                                     </div>
                                 </div>
                                 <div class="prd-progress prd-block_info_item" data-left-in-stock="">
-                                    <div class="prd-progress-text">Hurry Up! Left <span class="prd-progress-text-left js-stock-left">26</span> in stock</div>
+                                    <div class="prd-progress-text">Hurry Up! Left <span class="prd-progress-text-left js-stock-left">{{ $product->stock_status}}</span> in stock</div>
                                     <div class="prd-progress-text-null"></div>
                                     <div class="prd-progress-bar-wrap progress">
                                         <div class="prd-progress-bar progress-bar active" data-stock="50, 10, 30, 25, 1000, 15000" style="width: 53%;"></div>
@@ -495,18 +494,17 @@
                                         <div id="collapse2" class="panel-collapse collapse show">
                                             <div class="panel-body">
                                                 <h4>Give you a complete account of the system</h4>
-                                                <p>
+                                                {{-- <p>
                                                     But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual
                                                     teachings of the great explorer of the truth, the master-builder of human happiness.
-                                                </p>
+                                                </p> --}}
                                                 <div class="row mt-3">
                                                     <div class="col-md-9">
                                                         <p>
-                                                            But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual
-                                                            teachings of the great explorer of the truth, the master-builder of human happiness.
+                                                            {{ $product->description}}
                                                         </p>
                                                     </div>
-                                                    <div class="col-md-9"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/product-description-01.webp" alt="" class="lazyload" /></div>
+                                                    <div class="col-md-9"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ asset('images/products')}}/{{$product->image}}" alt="" class="lazyload" /></div>
                                                 </div>
                                                 <div class="mt-3"></div>
                                                 <h4>List heading</h4>
@@ -726,14 +724,15 @@
                         class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
                         data-slick='{"slidesToShow": 4, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'
                     >
+                    @foreach ($regular as $pro)
                         <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
                             <div class="prd-inside">
                                 <div class="prd-img-area">
-                                    <a href="product.html" class="prd-img image-hover-scale image-container">
+                                    <a href="{{route('product.details',['slug'=>$pro->slug])}}" class="prd-img image-hover-scale image-container">
                                         <img
                                             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="images/skins/fashion/products/product-06-1.webp"
-                                            alt="Midi Dress with Belt"
+                                            data-src="{{ asset('images/products')}}/{{$pro->image}}"
+                                            alt="{{$pro->name}}"
                                             class="js-prd-img lazyload fade-up"
                                         />
                                         <div class="foxic-loader"></div>
@@ -749,7 +748,7 @@
                                                 <span class="path8"></span><span class="path9"></span><span class="path10"></span>
                                             </i>
                                             <ul>
-                                                <li data-image="images/skins/fashion/products/product-06-1.webp">
+                                                <li data-image="{{ asset('images/products')}}/{{$pro->image}}">
                                                     <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-grey.html" alt="" /></a>
                                                 </li>
                                                 <li data-image="images/skins/fashion/products/product-06-color-2.webp">
@@ -790,13 +789,13 @@
                                             <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
                                         </div>
                                         <div class="prd-tag"><a href="#">Seiko</a></div>
-                                        <h2 class="prd-title"><a href="product.html">Midi Dress with Belt</a></h2>
+                                        <h2 class="prd-title"><a href="{{route('product.details',['slug'=>$pro->slug])}}">{{$pro->name}}</a></h2>
                                         <div class="prd-description">
                                             Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
                                         </div>
                                         <div class="prd-action">
                                             <form action="#">
-                                                <button class="btn js-prd-addtocart" data-product='{"name": "Midi Dress with Belt", "path":"images/skins/fashion/products/product-06-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
+                                                <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"images/skins/fashion/products/product-06-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
                                                     Add To Cart
                                                 </button>
                                             </form>
@@ -813,12 +812,12 @@
                                             </div>
                                         </div>
                                         <div class="prd-price">
-                                            <div class="price-new">$ 180</div>
+                                            <div class="price-new">$ {{$pro->regular_price}}</div>
                                         </div>
                                         <div class="prd-action">
                                             <div class="prd-action-left">
                                                 <form action="#">
-                                                    <button class="btn js-prd-addtocart" data-product='{"name": "Midi Dress with Belt", "path":"images/skins/fashion/products/product-06-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
+                                                    <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"{{ asset('images/products')}}/{{$pro->image}}", "url":"product.html", "aspect_ratio":0.778}'>
                                                         Add To Cart
                                                     </button>
                                                 </form>
@@ -828,200 +827,16 @@
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                    @foreach ($regular as $pro)
                         <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
                             <div class="prd-inside">
                                 <div class="prd-img-area">
-                                    <a href="product.html" class="prd-img image-hover-scale image-container">
+                                    <a href="{{route('product.details',['slug'=>$pro->slug])}}" class="prd-img image-hover-scale image-container">
                                         <img
                                             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="images/skins/fashion/products/product-17-1.webp"
-                                            alt="Stand Collar Shirt"
-                                            class="js-prd-img lazyload fade-up"
-                                        />
-                                        <div class="foxic-loader"></div>
-                                        <div class="prd-big-squared-labels">
-                                            <div class="label-sale">
-                                                <span>-10% <span class="sale-text">Sale</span></span>
-                                                <div class="countdown-circle">
-                                                    <div class="countdown js-countdown" data-countdown="2021/07/01"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="prd-circle-labels">
-                                        <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
-                                        <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                        <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
-                                    </div>
-                                    <ul class="list-options color-swatch">
-                                        <li data-image="images/skins/fashion/products/product-17-1.webp" class="active">
-                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-17-1.webp" class="lazyload fade-up" alt="Color Name" />
-                                            </a>
-                                        </li>
-                                        <li data-image="images/skins/fashion/products/product-17-2.webp">
-                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-17-2.webp" class="lazyload fade-up" alt="Color Name" />
-                                            </a>
-                                        </li>
-                                        <li data-image="images/skins/fashion/products/product-17-3.webp">
-                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-17-3.webp" class="lazyload fade-up" alt="Color Name" />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="prd-info">
-                                    <div class="prd-info-wrap">
-                                        <div class="prd-info-top">
-                                            <div class="prd-rating">
-                                                <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-                                            </div>
-                                        </div>
-                                        <div class="prd-rating justify-content-center">
-                                            <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-                                        </div>
-                                        <div class="prd-tag"><a href="#">FOXic</a></div>
-                                        <h2 class="prd-title"><a href="product.html">Stand Collar Shirt</a></h2>
-                                        <div class="prd-description">
-                                            Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
-                                        </div>
-                                        <div class="prd-action">
-                                            <form action="#">
-                                                <button class="btn js-prd-addtocart" data-product='{"name": "Stand Collar Shirt", "path":"images/skins/fashion/products/product-17-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
-                                                    Add To Cart
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="prd-hovers">
-                                        <div class="prd-circle-labels">
-                                            <div>
-                                                <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
-                                                <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                            </div>
-                                            <div class="prd-hide-mobile">
-                                                <a href="#" class="circle-label-qview js-prd-quickview" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="prd-price">
-                                            <div class="price-old">$ 200</div>
-                                            <div class="price-new">$ 180</div>
-                                        </div>
-                                        <div class="prd-action">
-                                            <div class="prd-action-left">
-                                                <form action="#">
-                                                    <button class="btn js-prd-addtocart" data-product='{"name": "Stand Collar Shirt", "path":"images/skins/fashion/products/product-17-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
-                                                        Add To Cart
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
-                            <div class="prd-inside">
-                                <div class="prd-img-area">
-                                    <a href="product.html" class="prd-img image-hover-scale image-container">
-                                        <img
-                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="images/skins/fashion/products/product-21-1.webp"
-                                            alt="Genuine Leather Strap Watch"
-                                            class="js-prd-img lazyload fade-up"
-                                        />
-                                        <div class="foxic-loader"></div>
-                                        <div class="prd-big-squared-labels">
-                                            <div class="label-new"><span>New</span></div>
-                                        </div>
-                                    </a>
-                                    <div class="prd-circle-labels">
-                                        <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
-                                        <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                        <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
-                                    </div>
-                                    <ul class="list-options color-swatch">
-                                        <li data-image="images/skins/fashion/products/product-21-1.webp" class="active">
-                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-21-1.webp" class="lazyload fade-up" alt="Color Name" />
-                                            </a>
-                                        </li>
-                                        <li data-image="images/skins/fashion/products/product-21-2.webp">
-                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-21-2.webp" class="lazyload fade-up" alt="Color Name" />
-                                            </a>
-                                        </li>
-                                        <li data-image="images/skins/fashion/products/product-21-3.webp">
-                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-21-3.webp" class="lazyload fade-up" alt="Color Name" />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="prd-info">
-                                    <div class="prd-info-wrap">
-                                        <div class="prd-info-top">
-                                            <div class="prd-rating">
-                                                <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-                                            </div>
-                                        </div>
-                                        <div class="prd-rating justify-content-center">
-                                            <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
-                                        </div>
-                                        <div class="prd-tag"><a href="#">FOXic</a></div>
-                                        <h2 class="prd-title"><a href="product.html">Genuine Leather Strap Watch</a></h2>
-                                        <div class="prd-description">
-                                            Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
-                                        </div>
-                                        <div class="prd-action">
-                                            <form action="#">
-                                                <button
-                                                    class="btn js-prd-addtocart"
-                                                    data-product='{"name": "Genuine Leather Strap Watch", "path":"images/skins/fashion/products/product-21-1.webp", "url":"product.html", "aspect_ratio":0.778}'
-                                                >
-                                                    Add To Cart
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="prd-hovers">
-                                        <div class="prd-circle-labels">
-                                            <div>
-                                                <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
-                                                <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
-                                            </div>
-                                            <div class="prd-hide-mobile">
-                                                <a href="#" class="circle-label-qview js-prd-quickview" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="prd-price">
-                                            <div class="price-new">$ 180</div>
-                                        </div>
-                                        <div class="prd-action">
-                                            <div class="prd-action-left">
-                                                <form action="#">
-                                                    <button
-                                                        class="btn js-prd-addtocart"
-                                                        data-product='{"name": "Genuine Leather Strap Watch", "path":"images/skins/fashion/products/product-21-1.webp", "url":"product.html", "aspect_ratio":0.778}'
-                                                    >
-                                                        Add To Cart
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
-                            <div class="prd-inside">
-                                <div class="prd-img-area">
-                                    <a href="product.html" class="prd-img image-hover-scale image-container">
-                                        <img
-                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="images/skins/fashion/products/product-26-1.webp"
-                                            alt="Pureboost Running Shoes"
+                                            data-src="{{ asset('images/products')}}/{{$pro->image}}"
+                                            alt="{{$pro->name}}"
                                             class="js-prd-img lazyload fade-up"
                                         />
                                         <div class="foxic-loader"></div>
@@ -1031,21 +846,38 @@
                                         <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
                                         <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                         <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
+                                        <div class="colorswatch-label colorswatch-label--variants js-prd-colorswatch">
+                                            <i class="icon-palette">
+                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span>
+                                                <span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                            </i>
+                                            <ul>
+                                                <li data-image="{{ asset('images/products')}}/{{$pro->image}}">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-grey.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-2.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-green.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-3.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-black.html" alt="" /></a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                     <ul class="list-options color-swatch">
-                                        <li data-image="images/skins/fashion/products/product-26-1.webp" class="active">
+                                        <li data-image="images/skins/fashion/products/product-06-1.webp" class="active">
                                             <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-26-1.webp" class="lazyload fade-up" alt="Color Name" />
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-1.webp" class="lazyload fade-up" alt="Color Name" />
                                             </a>
                                         </li>
-                                        <li data-image="images/skins/fashion/products/product-26-2.webp">
+                                        <li data-image="images/skins/fashion/products/product-06-2.webp">
                                             <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-26-2.webp" class="lazyload fade-up" alt="Color Name" />
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-2.webp" class="lazyload fade-up" alt="Color Name" />
                                             </a>
                                         </li>
-                                        <li data-image="images/skins/fashion/products/product-26-3.webp">
+                                        <li data-image="images/skins/fashion/products/product-06-3.webp">
                                             <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-26-3.webp" class="lazyload fade-up" alt="Color Name" />
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-3.webp" class="lazyload fade-up" alt="Color Name" />
                                             </a>
                                         </li>
                                     </ul>
@@ -1060,14 +892,14 @@
                                         <div class="prd-rating justify-content-center">
                                             <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
                                         </div>
-                                        <div class="prd-tag"><a href="#">FOXic</a></div>
-                                        <h2 class="prd-title"><a href="product.html">Pureboost Running Shoes</a></h2>
+                                        <div class="prd-tag"><a href="#">Seiko</a></div>
+                                        <h2 class="prd-title"><a href="{{route('product.details',['slug'=>$pro->slug])}}">{{$pro->name}}</a></h2>
                                         <div class="prd-description">
                                             Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
                                         </div>
                                         <div class="prd-action">
                                             <form action="#">
-                                                <button class="btn js-prd-addtocart" data-product='{"name": "Pureboost Running Shoes", "path":"images/skins/fashion/products/product-26-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
+                                                <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"images/skins/fashion/products/product-06-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
                                                     Add To Cart
                                                 </button>
                                             </form>
@@ -1084,15 +916,12 @@
                                             </div>
                                         </div>
                                         <div class="prd-price">
-                                            <div class="price-new">$ 180</div>
+                                            <div class="price-new">$ {{$pro->regular_price}}</div>
                                         </div>
                                         <div class="prd-action">
                                             <div class="prd-action-left">
                                                 <form action="#">
-                                                    <button
-                                                        class="btn js-prd-addtocart"
-                                                        data-product='{"name": "Pureboost Running Shoes", "path":"images/skins/fashion/products/product-26-1.webp", "url":"product.html", "aspect_ratio":0.778}'
-                                                    >
+                                                    <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"{{ asset('images/products')}}/{{$pro->image}}", "url":"product.html", "aspect_ratio":0.778}'>
                                                         Add To Cart
                                                     </button>
                                                 </form>
@@ -1102,14 +931,16 @@
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                    @foreach ($regular as $pro)
                         <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
                             <div class="prd-inside">
                                 <div class="prd-img-area">
-                                    <a href="product.html" class="prd-img image-hover-scale image-container">
+                                    <a href="{{route('product.details',['slug'=>$pro->slug])}}" class="prd-img image-hover-scale image-container">
                                         <img
                                             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="images/skins/fashion/products/product-30-1.webp"
-                                            alt="Multiple Pocket Waist Pack"
+                                            data-src="{{ asset('images/products')}}/{{$pro->image}}"
+                                            alt="{{$pro->name}}"
                                             class="js-prd-img lazyload fade-up"
                                         />
                                         <div class="foxic-loader"></div>
@@ -1119,21 +950,38 @@
                                         <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
                                         <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                         <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
+                                        <div class="colorswatch-label colorswatch-label--variants js-prd-colorswatch">
+                                            <i class="icon-palette">
+                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span>
+                                                <span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                            </i>
+                                            <ul>
+                                                <li data-image="{{ asset('images/products')}}/{{$pro->image}}">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-grey.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-2.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-green.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-3.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-black.html" alt="" /></a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                     <ul class="list-options color-swatch">
-                                        <li data-image="images/skins/fashion/products/product-30-1.webp" class="active">
+                                        <li data-image="images/skins/fashion/products/product-06-1.webp" class="active">
                                             <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-30-1.webp" class="lazyload fade-up" alt="Color Name" />
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-1.webp" class="lazyload fade-up" alt="Color Name" />
                                             </a>
                                         </li>
-                                        <li data-image="images/skins/fashion/products/product-30-2.webp">
+                                        <li data-image="images/skins/fashion/products/product-06-2.webp">
                                             <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-30-2.webp" class="lazyload fade-up" alt="Color Name" />
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-2.webp" class="lazyload fade-up" alt="Color Name" />
                                             </a>
                                         </li>
-                                        <li data-image="images/skins/fashion/products/product-30-3.webp">
+                                        <li data-image="images/skins/fashion/products/product-06-3.webp">
                                             <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-30-3.webp" class="lazyload fade-up" alt="Color Name" />
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-3.webp" class="lazyload fade-up" alt="Color Name" />
                                             </a>
                                         </li>
                                     </ul>
@@ -1148,17 +996,14 @@
                                         <div class="prd-rating justify-content-center">
                                             <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
                                         </div>
-                                        <div class="prd-tag"><a href="#">FOXic</a></div>
-                                        <h2 class="prd-title"><a href="product.html">Multiple Pocket Waist Pack</a></h2>
+                                        <div class="prd-tag"><a href="#">Seiko</a></div>
+                                        <h2 class="prd-title"><a href="{{route('product.details',['slug'=>$pro->slug])}}">{{$pro->name}}</a></h2>
                                         <div class="prd-description">
                                             Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
                                         </div>
                                         <div class="prd-action">
                                             <form action="#">
-                                                <button
-                                                    class="btn js-prd-addtocart"
-                                                    data-product='{"name": "Multiple Pocket Waist Pack", "path":"images/skins/fashion/products/product-30-1.webp", "url":"product.html", "aspect_ratio":0.778}'
-                                                >
+                                                <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"images/skins/fashion/products/product-06-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
                                                     Add To Cart
                                                 </button>
                                             </form>
@@ -1175,15 +1020,12 @@
                                             </div>
                                         </div>
                                         <div class="prd-price">
-                                            <div class="price-new">$ 180</div>
+                                            <div class="price-new">$ {{$pro->regular_price}}</div>
                                         </div>
                                         <div class="prd-action">
                                             <div class="prd-action-left">
                                                 <form action="#">
-                                                    <button
-                                                        class="btn js-prd-addtocart"
-                                                        data-product='{"name": "Multiple Pocket Waist Pack", "path":"images/skins/fashion/products/product-30-1.webp", "url":"product.html", "aspect_ratio":0.778}'
-                                                    >
+                                                    <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"{{ asset('images/products')}}/{{$pro->image}}", "url":"product.html", "aspect_ratio":0.778}'>
                                                         Add To Cart
                                                     </button>
                                                 </form>
@@ -1193,6 +1035,216 @@
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                    @foreach ($regular as $pro)
+                        <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
+                            <div class="prd-inside">
+                                <div class="prd-img-area">
+                                    <a href="{{route('product.details',['slug'=>$pro->slug])}}" class="prd-img image-hover-scale image-container">
+                                        <img
+                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                            data-src="{{ asset('images/products')}}/{{$pro->image}}"
+                                            alt="{{$pro->name}}"
+                                            class="js-prd-img lazyload fade-up"
+                                        />
+                                        <div class="foxic-loader"></div>
+                                        <div class="prd-big-squared-labels"></div>
+                                    </a>
+                                    <div class="prd-circle-labels">
+                                        <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+                                        <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+                                        <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
+                                        <div class="colorswatch-label colorswatch-label--variants js-prd-colorswatch">
+                                            <i class="icon-palette">
+                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span>
+                                                <span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                            </i>
+                                            <ul>
+                                                <li data-image="{{ asset('images/products')}}/{{$pro->image}}">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-grey.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-2.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-green.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-3.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-black.html" alt="" /></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <ul class="list-options color-swatch">
+                                        <li data-image="images/skins/fashion/products/product-06-1.webp" class="active">
+                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-1.webp" class="lazyload fade-up" alt="Color Name" />
+                                            </a>
+                                        </li>
+                                        <li data-image="images/skins/fashion/products/product-06-2.webp">
+                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-2.webp" class="lazyload fade-up" alt="Color Name" />
+                                            </a>
+                                        </li>
+                                        <li data-image="images/skins/fashion/products/product-06-3.webp">
+                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-3.webp" class="lazyload fade-up" alt="Color Name" />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prd-info">
+                                    <div class="prd-info-wrap">
+                                        <div class="prd-info-top">
+                                            <div class="prd-rating">
+                                                <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
+                                            </div>
+                                        </div>
+                                        <div class="prd-rating justify-content-center">
+                                            <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
+                                        </div>
+                                        <div class="prd-tag"><a href="#">Seiko</a></div>
+                                        <h2 class="prd-title"><a href="{{route('product.details',['slug'=>$pro->slug])}}">{{$pro->name}}</a></h2>
+                                        <div class="prd-description">
+                                            Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
+                                        </div>
+                                        <div class="prd-action">
+                                            <form action="#">
+                                                <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"images/skins/fashion/products/product-06-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
+                                                    Add To Cart
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="prd-hovers">
+                                        <div class="prd-circle-labels">
+                                            <div>
+                                                <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+                                                <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+                                            </div>
+                                            <div class="prd-hide-mobile">
+                                                <a href="#" class="circle-label-qview js-prd-quickview" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="prd-price">
+                                            <div class="price-new">$ {{$pro->regular_price}}</div>
+                                        </div>
+                                        <div class="prd-action">
+                                            <div class="prd-action-left">
+                                                <form action="#">
+                                                    <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"{{ asset('images/products')}}/{{$pro->image}}", "url":"product.html", "aspect_ratio":0.778}'>
+                                                        Add To Cart
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    @foreach ($regular as $pro)
+                        <div class="prd prd--style2 prd-labels--max prd-labels-shadow">
+                            <div class="prd-inside">
+                                <div class="prd-img-area">
+                                    <a href="{{route('product.details',['slug'=>$pro->slug])}}" class="prd-img image-hover-scale image-container">
+                                        <img
+                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                            data-src="{{ asset('images/products')}}/{{$pro->image}}"
+                                            alt="{{$pro->name}}"
+                                            class="js-prd-img lazyload fade-up"
+                                        />
+                                        <div class="foxic-loader"></div>
+                                        <div class="prd-big-squared-labels"></div>
+                                    </a>
+                                    <div class="prd-circle-labels">
+                                        <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+                                        <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+                                        <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
+                                        <div class="colorswatch-label colorswatch-label--variants js-prd-colorswatch">
+                                            <i class="icon-palette">
+                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span>
+                                                <span class="path8"></span><span class="path9"></span><span class="path10"></span>
+                                            </i>
+                                            <ul>
+                                                <li data-image="{{ asset('images/products')}}/{{$pro->image}}">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-grey.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-2.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-green.html" alt="" /></a>
+                                                </li>
+                                                <li data-image="images/skins/fashion/products/product-06-color-3.webp">
+                                                    <a class="js-color-toggle" data-toggle="tooltip" data-placement="left" title="Color Name"><img src="images/colorswatch/color-black.html" alt="" /></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <ul class="list-options color-swatch">
+                                        <li data-image="images/skins/fashion/products/product-06-1.webp" class="active">
+                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-1.webp" class="lazyload fade-up" alt="Color Name" />
+                                            </a>
+                                        </li>
+                                        <li data-image="images/skins/fashion/products/product-06-2.webp">
+                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-2.webp" class="lazyload fade-up" alt="Color Name" />
+                                            </a>
+                                        </li>
+                                        <li data-image="images/skins/fashion/products/product-06-3.webp">
+                                            <a href="#" class="js-color-toggle" data-toggle="tooltip" data-placement="right" title="Color Name">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fashion/products/product-06-3.webp" class="lazyload fade-up" alt="Color Name" />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prd-info">
+                                    <div class="prd-info-wrap">
+                                        <div class="prd-info-top">
+                                            <div class="prd-rating">
+                                                <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
+                                            </div>
+                                        </div>
+                                        <div class="prd-rating justify-content-center">
+                                            <i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i>
+                                        </div>
+                                        <div class="prd-tag"><a href="#">Seiko</a></div>
+                                        <h2 class="prd-title"><a href="{{route('product.details',['slug'=>$pro->slug])}}">{{$pro->name}}</a></h2>
+                                        <div class="prd-description">
+                                            Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
+                                        </div>
+                                        <div class="prd-action">
+                                            <form action="#">
+                                                <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"images/skins/fashion/products/product-06-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
+                                                    Add To Cart
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="prd-hovers">
+                                        <div class="prd-circle-labels">
+                                            <div>
+                                                <a href="#" class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+                                                <a href="#" class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+                                            </div>
+                                            <div class="prd-hide-mobile">
+                                                <a href="#" class="circle-label-qview js-prd-quickview" data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK VIEW</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="prd-price">
+                                            <div class="price-new">$ {{$pro->regular_price}}</div>
+                                        </div>
+                                        <div class="prd-action">
+                                            <div class="prd-action-left">
+                                                <form action="#">
+                                                    <button class="btn js-prd-addtocart" data-product='{"name": "{{$pro->name}}", "path":"{{ asset('images/products')}}/{{$pro->image}}", "url":"product.html", "aspect_ratio":0.778}'>
+                                                        Add To Cart
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                        
                     </div>
                 </div>
             </div>
