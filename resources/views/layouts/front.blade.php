@@ -169,6 +169,9 @@
                                         <a href="/" class="active">Home</a>
                                     </li>
                                     <li class="mmenu-item--mega">
+                                        <a href="/shop">Shop</a>
+                                    </li>
+                                    <li class="mmenu-item--mega">
                                         <a href="/cart">Cart</a>
                                     </li>
                                     <li class="mmenu-item--mega">
