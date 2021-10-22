@@ -68,9 +68,9 @@
                                     </div>
                                     <div class="prd-action">
                                         <form action="#">
-                                            <button class="btn js-prd-addtocart" data-product='{"name": "Oversized Cotton Blouse", "path":"images/skins/fashion/products/product-03-1.webp", "url":"product.html", "aspect_ratio":0.778}'>
+                                            {{-- <button class="btn js-prd-addtocart" data-product='{ "name": "Oversized Cotton Blouse", "path":"images/skins/fashion/products/product-03-1.webp", "url":"#", "aspect_ratio:0.778"}' wire:click.prevent="store({{$product->id,'{{$product->name}}'}},{{$product->regular_price}})">
                                                 Add To Cart
-                                            </button>
+                                            </button> --}}
                                         </form>
                                     </div>
                                 </div>
